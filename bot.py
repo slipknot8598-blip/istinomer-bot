@@ -214,7 +214,7 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         report = generate_report(text, analysis)
         await query.edit_message_text(f"📄 Отчёт:\n\n{report}", reply_markup=get_menu_keyboard())
 
-def main():
+    async def main():
     token = TELEGRAM_TOKEN
     request = HTTPXRequest()
     app = Application.builder().token(token).request(request).build()
@@ -228,7 +228,8 @@ def main():
     app.add_handler(CallbackQueryHandler(button_callback, pattern="flip|blind|export"))
 
     print("✅ Истиномер 2.0 запущен")
-    app.run_polling()
+    await app.run_polling()
 
 if __name__ == "__main__":
-    main()
+    import asyncio
+    asyncio.run(main())
