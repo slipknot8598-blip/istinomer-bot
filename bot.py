@@ -2,7 +2,6 @@ import os
 import openai
 import re
 import random
-import asyncio
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes, CallbackQueryHandler
 from telegram.request import HTTPXRequest
@@ -14,7 +13,7 @@ TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 # ===== КЛИЕНТ ДЛЯ CLOUD.RU =====
 client = openai.OpenAI(
     api_key=CLOUD_API_KEY,
-   base_url="https://api.cloud.ru/v1"
+    base_url="https://foundation-models.api.cloud.ru/v1"
 )
 
 user_last_text = {}
