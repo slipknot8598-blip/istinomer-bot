@@ -2,6 +2,7 @@ import os
 import openai
 import re
 import random
+import asyncio
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes, CallbackQueryHandler
 from telegram.request import HTTPXRequest
@@ -214,7 +215,7 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
         report = generate_report(text, analysis)
         await query.edit_message_text(f"📄 Отчёт:\n\n{report}", reply_markup=get_menu_keyboard())
 
-    async def main():
+async def main():
     token = TELEGRAM_TOKEN
     request = HTTPXRequest()
     app = Application.builder().token(token).request(request).build()
@@ -231,5 +232,4 @@ async def button_callback(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await app.run_polling()
 
 if __name__ == "__main__":
-    import asyncio
     asyncio.run(main())
