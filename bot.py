@@ -14,7 +14,7 @@ TELEGRAM_TOKEN = os.getenv("TELEGRAM_TOKEN")
 # ===== КЛИЕНТ ДЛЯ CLOUD.RU =====
 client = openai.OpenAI(
     api_key=CLOUD_API_KEY,
-    base_url="https://foundation-models.api.cloud.ru/v1"
+   base_url="https://api.cloud.ru/v1"
 )
 
 user_last_text = {}
